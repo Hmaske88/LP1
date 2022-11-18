@@ -13,7 +13,7 @@ public class Main
         int pid[]=new int[n];
         int wt[]=new int[n];
         int tt[]=new int[n];
-        int temp,avgwt=0,avgtt=0;
+        int temp,avgwt=0,avgtt=0,ct=0;
         
         for(int i=0;i<n;i++)
         {
@@ -47,15 +47,9 @@ public class Main
         
         for(int i=0;i<n;i++)
         {
-            if(i>0)
-            {
-            wt[i]=tt[i-1]-at[i];
-            tt[i]=wt[i]+bt[i];
-            }
-            else{
-                wt[i]=at[i];
-                tt[i]=wt[i]+bt[i];
-            }
+            ct+=bt[i];
+            tt[i]=ct-at[i];
+            wt[i]=tt[i]-bt[i];
             avgwt+=wt[i];
             avgtt+=tt[i];
         }
@@ -66,7 +60,7 @@ public class Main
             System.out.println(pid[i]+"  \t  " +at[i]+"  \t  " +bt[i]+ "  \t  "+wt[i]+"  \t  " +tt[i]);
         }
         
-        System.out.println("Average waiting time :"+avgwt/n);
-        System.out.println("Average turnaround time :"+avgtt/n);
+        System.out.println("Average waiting time :"+(float)avgwt/n);
+        System.out.println("Average turnaround time :"+(float)avgtt/n);
     }
 }
