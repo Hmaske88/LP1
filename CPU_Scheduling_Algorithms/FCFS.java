@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main
+public class FCFS
 {
     public static void main(String arg[])
     {
