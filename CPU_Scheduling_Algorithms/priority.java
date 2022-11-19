@@ -31,32 +31,11 @@ public class priority
             f[i]=0;
         }
         
-        for(int i=0;i<n-1;i++)
-        {
-            for(int j=i+1;j<n;j++)
-            {
-                if(prt[i]>prt[j])
-                {
-                    temp=prt[i];
-                    prt[i]=prt[j];
-                    prt[j]=temp;
-                
-                    temp=at[i];
-                    at[i]=at[j];
-                    at[j]=temp;
-                
-                    temp=bt[i];
-                    bt[i]=bt[j];
-                    bt[j]=temp;
-                }
-            }
-        }
         int st=0,numberofprocess=0;
         while(true)
         {
             int c=n;
             int priority=999;
-            int arriving=0;
             
             if(numberofprocess==n)
             {
@@ -65,10 +44,9 @@ public class priority
             
             for(int i=0;i<n;i++)
             {
-                if((at[i]>=arriving) && (prt[i]<priority) && (f[i]==0))
+                if((at[i]<=st) && (prt[i]<priority) && (f[i]==0))
                 {
                     priority=prt[i];
-                    arriving=at[i];
                     c=i;
                 }
             }
