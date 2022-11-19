@@ -13,7 +13,8 @@ public class FCFS
         int pid[]=new int[n];
         int wt[]=new int[n];
         int tt[]=new int[n];
-        int temp,avgwt=0,avgtt=0,ct=0;
+        int ct[]=new int[n];
+        int temp,avgwt=0,avgtt=0;
         
         for(int i=0;i<n;i++)
         {
@@ -47,17 +48,32 @@ public class FCFS
         
         for(int i=0;i<n;i++)
         {
-            ct+=bt[i];
-            tt[i]=ct-at[i];
+            if(i==0)
+            {
+                ct[i]=at[i]+bt[i];
+            }
+            
+            else
+            {
+                if(at[i]>ct[i-1])
+                {
+                    ct[i]=at[i]+bt[i];
+                }
+                else
+                {
+                    ct[i]=ct[i-1]+bt[i];
+                }
+            }
+            tt[i]=ct[i]-at[i];
             wt[i]=tt[i]-bt[i];
             avgwt+=wt[i];
             avgtt+=tt[i];
         }
         
-        System.out.println("pId  \t  at  \t  bt  \t  wt  \t  tt");
+        System.out.println("pId  \t  at  \t  bt  \t  wt  \t  tt  \t  ct");
         for(int i=0;i<n;i++)
         {
-            System.out.println(pid[i]+"  \t  " +at[i]+"  \t  " +bt[i]+ "  \t  "+wt[i]+"  \t  " +tt[i]);
+            System.out.println(pid[i]+"  \t  " +at[i]+"  \t  " +bt[i]+ "  \t  "+wt[i]+"  \t  " +tt[i]+"  \t  " +ct[i]);
         }
         
         System.out.println("Average waiting time :"+(float)avgwt/n);
