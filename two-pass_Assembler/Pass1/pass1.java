@@ -21,7 +21,7 @@ public class pass1 {
 		int litcount = 0;
         
 		//created two file for input and output
-		File file = new File("Input.asm");
+		File file = new File("input.asm");
 		File file1 = new File("output.asm");
 		BufferedReader reader = new BufferedReader(new FileReader(file));     //reading the file
 		BufferedWriter writer= new BufferedWriter(new FileWriter(file1));     //writing into the file
