@@ -35,7 +35,7 @@ public class nextFit
                 {
                     System.out.println("The process of size "+pro[i]+" is placed in partition "+part[j]+" and hole of "+(part[j]-pro[i])+" is created");
                     part[j]=part[j]-pro[i];
-                    m++;
+                    m=j;
                     break;
                 }
             }
